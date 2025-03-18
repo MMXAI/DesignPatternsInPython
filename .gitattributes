@@ -1,0 +1,42 @@
+# Automatically normalize line endings for text files
+* text=auto
+
+# Ensure that files with the following extensions are always treated as text files
+*.py text
+*.txt text
+*.md text
+*.yml text
+*.yaml text
+*.json text
+*.html text
+*.css text
+*.js text
+
+# Ensure that files with the following extensions are always treated as binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.exe binary
+
+# Ensure that line endings are normalized for specific file types
+*.py eol=lf
+*.txt eol=lf
+*.md eol=lf
+*.yml eol=lf
+*.yaml eol=lf
+*.json eol=lf
+*.html eol=lf
+*.css eol=lf
+*.js eol=lf
+
+# Ensure that shell scripts are executable
+*.sh text eol=lf
+
+# Ensure that Windows batch files are executable
+*.bat text eol=crlf
