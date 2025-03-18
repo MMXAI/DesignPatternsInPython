@@ -18,23 +18,29 @@ class Logger(ABC):
 class InfoLogger(Logger):
     def log(self, message, severity):
         if severity <= self.level:
-            print(f"[INFO]: {message}")
+            print(f"\n[INFO]: {message}\n")
         elif self.next_logger:
             self.next_logger.log(message, severity)
+        else:
+            print(f"Unknow severity level: {severity}\n")
 
 class DebugLogger(Logger):
     def log(self, message, severity):
         if severity <= self.level:
-            print(f"[DEBUG]: {message}")
+            print(f"\n[DEBUG]: {message}\n")
         elif self.next_logger:
             self.next_logger.log(message, severity)
+        else:
+            print(f"Unknow severity level: {severity}\n")
 
 class ErrorLogger(Logger):
     def log(self, message, severity):
         if severity <= self.level:
-            print(f"[ERROR]: {message}")
+            print(f"\n[ERROR]: {message}\n")
         elif self.next_logger:
             self.next_logger.log(message, severity)
+        else:
+            print(f"Unknow severity level: {severity}\n")
 
 # Client
 if __name__ == "__main__":
@@ -48,7 +54,5 @@ if __name__ == "__main__":
         .set_next(error_logger)
 
     # Send messages with different severity levels
-    info_logger.log("This is an info message.", severity=1)
-    info_logger.log("This is a debug message.", severity=2)
-    info_logger.log("This is an error message.", severity=3)
-    info_logger.log("This is a critical message.", severity=4)
+    for i in range(1, 7):
+        info_logger.log(f"This is a message with severity {i}.", severity=i)

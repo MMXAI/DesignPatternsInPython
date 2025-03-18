@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "Run Script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+        }
+    ]
+}
