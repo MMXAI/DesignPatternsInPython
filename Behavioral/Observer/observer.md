@@ -27,3 +27,41 @@ a behavioral design pattern that defines a one-to-many dependency between object
 - Notifications in distributed systems.
 
 This pattern is widely used in Python libraries like `RxPy` (Reactive Extensions) and frameworks like Django's signal system.
+
+---
+## `Observer Pattern V.S. Mediator Pattern`
+
+### **Key Differences**
+
+| **Aspect**              | **Observer Pattern**                          | **Mediator Pattern**                          |
+|--------------------------|-----------------------------------------------|-----------------------------------------------|
+| **Purpose**              | Notify observers of state changes.            | Centralize complex communication logic.       |
+| **Communication**        | Direct (subject notifies observers).          | Indirect (objects communicate via mediator).  |
+| **Coupling**             | Loose coupling between subject and observers. | Loose coupling between interacting objects.   |
+| **Number of Objects**    | One subject, many observers.                  | Many objects interacting through one mediator.|
+| **Complexity**           | Simpler, focused on state propagation.        | More complex, handles interaction logic.      |
+| **Example**              | Event handling, notifications.                | Chat systems, air traffic control systems.    |
+
+---
+
+### **When to Use Which?**
+- Use the **Observer Pattern** when:
+  - You need to notify multiple objects about state changes in a single object.
+  - You want to decouple the subject from its observers.
+  - Example: Event handling, notification systems.
+
+- Use the **Mediator Pattern** when:
+  - You have a complex web of interactions between multiple objects.
+  - You want to centralize communication logic to reduce dependencies.
+  - Example: Chat systems, UI components interacting with each other.
+
+---
+
+### **Summary**
+- **Observer**: Focuses on one-to-many state propagation.
+- **Mediator**: Focuses on managing many-to-many interactions through a central mediator.
+
+
+### **In Short:**
+- **Observer**: Use for **state propagation** (one → many).
+- **Mediator**: Use for **complex interactions** (many ↔ many).
