@@ -1,0 +1,2 @@
+`This pattern lets clients treat individual objects and compositions of objects uniformly` 
+It is particularly useful when you want to represent a hierarchy of objects and perform operations on them in a consistent manner.
