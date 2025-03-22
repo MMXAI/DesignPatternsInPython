@@ -1,0 +1,1 @@
+This pattern is used to reduce the cost of creating and manipulating a large number of similar objects. It is used when we need to create a large number of similar objects. One important feature of flyweight objects is that they are immutable. This means that they cannot be modified once they have been constructed.
