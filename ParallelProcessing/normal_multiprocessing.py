@@ -1,9 +1,11 @@
 from multiprocessing import Process
 import time
 
+
 def invoke_command(item):
     # Replace this with the actual command you want to invoke
     print(f"\n {round(time.time() - current_time, 20)} Processing {item}")
+
 
 current_time = time.time()
 

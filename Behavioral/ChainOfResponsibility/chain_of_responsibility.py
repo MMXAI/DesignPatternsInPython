@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 # Handler interface
 class Logger(ABC):
     def __init__(self, level):
@@ -14,6 +15,7 @@ class Logger(ABC):
     def log(self, message, severity):
         pass
 
+
 # Concrete Handlers
 class InfoLogger(Logger):
     def log(self, message, severity):
@@ -24,6 +26,7 @@ class InfoLogger(Logger):
         else:
             print(f"Unknow severity level: {severity}\n")
 
+
 class DebugLogger(Logger):
     def log(self, message, severity):
         if severity <= self.level:
@@ -33,6 +36,7 @@ class DebugLogger(Logger):
         else:
             print(f"Unknow severity level: {severity}\n")
 
+
 class ErrorLogger(Logger):
     def log(self, message, severity):
         if severity <= self.level:
@@ -41,6 +45,7 @@ class ErrorLogger(Logger):
             self.next_logger.log(message, severity)
         else:
             print(f"Unknow severity level: {severity}\n")
+
 
 # Client
 if __name__ == "__main__":

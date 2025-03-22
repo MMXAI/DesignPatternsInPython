@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+
 # Mediator Interface
 class AirTrafficControlTower(ABC):
     @abstractmethod
@@ -10,6 +11,7 @@ class AirTrafficControlTower(ABC):
     @abstractmethod
     def send_message(self, sender, message):
         pass
+
 
 # Concrete Mediator
 class ControlTower(AirTrafficControlTower):
@@ -24,6 +26,7 @@ class ControlTower(AirTrafficControlTower):
         for aircraft in self._aircrafts:
             if aircraft != sender:  # Don't send the message back to the sender
                 aircraft.receive_message(sender, message)
+
 
 # Colleague (Aircraft)
 class Aircraft:
@@ -46,6 +49,7 @@ class Aircraft:
     def confirm_landing(self):
         print(f"{self.name} confirms landing.")
         self.control_tower.send_message(self, "Landing confirmed.")
+
 
 # Usage
 if __name__ == "__main__":

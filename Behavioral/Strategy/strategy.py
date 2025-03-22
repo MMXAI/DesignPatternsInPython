@@ -1,23 +1,28 @@
 from abc import ABC, abstractmethod
 
+
 # Step 1: Define the Strategy Interface
 class PaymentStrategy(ABC):
     @abstractmethod
     def pay(self, amount: float) -> None:
         pass
 
+
 # Step 2: Implement Concrete Strategies
 class CreditCardPayment(PaymentStrategy):
     def pay(self, amount: float) -> None:
         print(f"Paying ${amount} using Credit Card")
 
+
 class PayPalPayment(PaymentStrategy):
     def pay(self, amount: float) -> None:
         print(f"Paying ${amount} using PayPal")
 
+
 class BitcoinPayment(PaymentStrategy):
     def pay(self, amount: float) -> None:
         print(f"Paying ${amount} using Bitcoin")
+
 
 # Step 3: Create the Context
 class PaymentContext:
@@ -29,6 +34,7 @@ class PaymentContext:
 
     def execute_payment(self, amount: float):
         self._strategy.pay(amount)
+
 
 # Step 4: Use the Context and Strategies
 if __name__ == "__main__":

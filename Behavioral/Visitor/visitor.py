@@ -3,6 +3,7 @@ class DocumentElement:
     def accept(self, visitor):
         pass
 
+
 # Concrete Elements: Heading, Paragraph, Image
 class Heading(DocumentElement):
     def __init__(self, text):
@@ -11,6 +12,7 @@ class Heading(DocumentElement):
     def accept(self, visitor):
         visitor.visit_heading(self)
 
+
 class Paragraph(DocumentElement):
     def __init__(self, text):
         self.text = text
@@ -18,12 +20,14 @@ class Paragraph(DocumentElement):
     def accept(self, visitor):
         visitor.visit_paragraph(self)
 
+
 class Image(DocumentElement):
     def __init__(self, src):
         self.src = src
 
     def accept(self, visitor):
         visitor.visit_image(self)
+
 
 # Visitor Interface: Defines operations for each element type
 class DocumentVisitor:
@@ -36,6 +40,7 @@ class DocumentVisitor:
     def visit_image(self, image):
         pass
 
+
 # Concrete Visitors: HTML Exporter and Spell Checker
 class HTMLExporter(DocumentVisitor):
     def visit_heading(self, heading):
@@ -47,6 +52,7 @@ class HTMLExporter(DocumentVisitor):
     def visit_image(self, image):
         print(f'<img src="{image.src}" />')
 
+
 class SpellChecker(DocumentVisitor):
     def visit_heading(self, heading):
         print(f"Spell-checking heading: {heading.text}")
@@ -56,6 +62,7 @@ class SpellChecker(DocumentVisitor):
 
     def visit_image(self, image):
         print(f"Spell-checking skipped for image: {image.src}")
+
 
 # Document: A collection of elements
 class Document:
@@ -68,6 +75,7 @@ class Document:
     def accept(self, visitor):
         for element in self.elements:
             element.accept(visitor)
+
 
 # Usage
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ class Observer:
     def update(self, message):
         pass
 
+
 # Step 2: Define the Subject
 class Subject:
     def __init__(self):
@@ -18,6 +19,7 @@ class Subject:
         for observer in self._observers:
             observer.update(message)
 
+
 # Step 3: Create ConcreteSubject
 class ConcreteSubject(Subject):
     def __init__(self):
@@ -28,6 +30,7 @@ class ConcreteSubject(Subject):
         self._state = state
         self.notify(f"State updated to: {self._state}")
 
+
 # Step 4: Create ConcreteObserver
 class ConcreteObserver(Observer):
     def __init__(self, name):
@@ -35,6 +38,7 @@ class ConcreteObserver(Observer):
 
     def update(self, message):
         print(f"{self._name} received message: {message}")
+
 
 # Step 5: Use the Observer Pattern
 if __name__ == "__main__":
