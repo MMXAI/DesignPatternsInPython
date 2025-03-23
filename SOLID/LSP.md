@@ -178,3 +178,98 @@ Code relying on the success (i.e., `True`) will fail if subclass doesn't maintai
 
 These rules ensure that **any code using the base class will continue to work perfectly when using the subclass**, which is the whole point of the **Liskov Substitution Principle (LSP)**.
 
+
+---
+# <span style="color:red;">*********************************************************</span>
+---
+
+
+# **Preserving the invariant**
+
+---
+
+## 🔑 **Invariant Meaning:**
+
+An **invariant** is a condition or rule that **must always remain true** throughout the lifetime of an object or system.
+
+> **A subclass must not break the internal state rules (invariants) defined by its base class.**
+
+In other words:
+- Subclasses **must maintain the logical correctness of base class behavior.**
+- They shouldn't change or violate essential properties (relationships, constraints) of the base class.
+
+---
+
+## **Example in Python:**
+
+### Base Class with Invariant:
+
+```python
+class Account:
+    def __init__(self, balance: float):
+        assert balance >= 0, "Balance must be non-negative"  # Invariant
+        self.balance = balance
+
+    def withdraw(self, amount: float):
+        assert amount >= 0, "Withdrawal must be non-negative"
+        if self.balance >= amount:
+            self.balance -= amount
+```
+
+- **Invariant:** `balance >= 0` → Balance should never go negative.
+
+---
+
+### Subclass Breaking Invariant:
+
+```python
+class OverdraftAccount(Account):
+    def withdraw(self, amount: float):
+        self.balance -= amount  # ❌ Allows negative balance → breaks invariant!
+```
+
+Now, if you replace `Account` with `OverdraftAccount`, the system may behave incorrectly because it no longer guarantees **`balance >= 0`**.
+
+---
+
+### ✅ **Preserving Invariant:**
+
+```python
+class SafeOverdraftAccount(Account):
+    def withdraw(self, amount: float):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            print("Insufficient funds")  # Still prevents negative balance
+```
+
+---
+
+## **Why Important:**
+
+- Prevents **bugs, inconsistencies, and incorrect assumptions** when substituting classes.
+- Ensures **object integrity** stays valid, regardless of subclassing.
+
+---
+
+## **In Simple Words:**
+
+> **“Don’t let your subclass mess up the essential rules or conditions that the base class guarantees!”**
+
+
+---
+# <span style="color:red;">*********************************************************</span>
+---
+
+
+# **⚠️ Important Tip:**
+
+**Subclasses should respect invariants.**  
+If they override behavior:
+- They should **call the parent class methods** (via `super()`) OR
+- Maintain the same checks and guarantees.
+
+
+---
+# <span style="color:red;">*********************************************************</span>
+---
